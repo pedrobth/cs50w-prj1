@@ -1,0 +1,24 @@
+# virtual environment
+env/
+readme.txt
+__pycache__
+models.py
+env-var.txt
+test.py
+tst.py
+test1.py
+struct1.sql
+*.log
+bug_func.py
+classes_subclasses.py
+good_rev.csv
+application0.py
+results.py
+git_ignore/
+static/css/
+readme.txt
+prev_requirements_old.txt
+flask_session/
+.bash_profile
+.DS_Store
+config.py

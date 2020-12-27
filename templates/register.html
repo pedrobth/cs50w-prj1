@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <form class="container ml-2" method="POST">
+        <div class="px-md-4 md-3 bg-black border-bottom box-shadow mt-3 mt-md-4 mt-lg-5">
+            <h1 class="display-4">Create Account</h1>
+        </div>
+        <div class="row ml-1">
+            <div class="ml-2 mt-3 mt-sm-4">User name:</div>
+        </div>
+        <div class="form-group col-6 mx-sm-1 mb-2 ml-0">
+            <input class="form-control"  type="text" placeholder="bob2000" name="user_name" required>
+            <div class="invalid-feedback">User name is required</div>
+        </div>
+        <div class="row ml-1">
+            <div class="ml-2 mt-2 mt-sm-3">email:</div>
+        </div>
+        <div class="form-group col-7 mx-sm-2 mb-2 ml-0">
+            <input type="text"  class="form-control" name="email" placeholder="bob2000@domain.com" required>
+            <div class="invalid-feedback">email is required</div>
+        </div>
+        <div class="row ml-1">
+            <div class="ml-2 mt-2 mt-sm-3">Password(8 to 30 characters):</div>
+        </div>
+        <div class="form-group col-9 mx-sm-2 mb-2 ml-0">
+            <input type="password"  class="form-control" name="password" placeholder="use symbol, number and capital letters" required>
+            <div class="invalid-feedback">Password is required</div>
+        </div>
+        <div class="row ml-1">
+            <div class="ml-2 mt-2 mt-sm-3">Confirm password:</div>
+        </div>
+        <div class="form-group col-9 mx-sm-2 mb-2 ml-0">
+            <input type="password" class="form-control" name="pass_confirm" required>
+            <div class="invalid-feedback">Password confirmation is required</div>
+        </div>
+        <button class="btn btn-primary mt-1 mt-sm-2 mt-md-3 mt-lg-4 ml-3 ml-sm-4" type="submit">Submit</button>
+    </form>
+
+{% endblock %}

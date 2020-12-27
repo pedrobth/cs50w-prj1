@@ -1,0 +1,157 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {% if book_dict.title %}
+        {{ book_dict.title }}
+    {% endif %}
+{% endblock %}
+
+{% block main %}
+<div class="container bg-dark">
+    <div class="d-flex flex-column flex-md-row align-items-center p2 px-md-4 md-3 bg-dark border-bottom box-shadow mt-5">
+        <h1 class="display-4 bg-dark text-white">Book Detail</h1>
+    </div>
+    <div class="jumbotron mt-3 mt-md-4 mt-lg-5 p-2 p-md-4 text-white rounded bg-dark">
+        <div class="row">
+            <div class="col-4">
+                    <img class="mt-2" src="/static/images/clip-art-books-25-dark.jpg" height="120" alt="book"/></div>
+            <div class="col-8">
+                <div class="row justify-content-end">
+                    <div class="col-8 align-items-center ml-md-4 ml-lg-5 pl-md-4 pl-lg-5">Rating</div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-3">Graph</div>
+                    <div class="col-2">
+                        <div class="d-flex justify-content-end">Score</div>
+                    </div>
+                    <div class="col-3">
+                        <div class="d-flex justify-content-end">Count</div>                    
+                    </div>
+                    <div class="col-4">
+                        <div class="d-flex">
+                            <div class="justify-content-end">Source</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <div class="progress mt-2" style="height: 6px;">
+                            <div class="progress-bar" role="progressbar" style="width: 77.6%;" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="d-flex justify-content-end">{{ good_reads_result.average_rating }}</div>
+                    </div>
+                    <div class="col-3">
+                      <div class="d-flex justify-content-end">{{ good_reads_result.work_ratings_count }}</div>
+                      
+                    </div>
+                    <div class="col-4">
+                        <a href="https://www.goodreads.com/">
+                            <img src="/static/images/goodreads-badge-read-reviews.png" height="25px"> </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                    <div class="progress mt-2" style="height: 6px;">
+                        <div class="progress-bar" role="progressbar" style="width: 77.6%;" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    </div>
+                    
+                    <div class="col-2">
+                      <div class="d-flex justify-content-end">{{ book_dict.avrg_score }}</div>
+                          
+                    </div>
+                    <div class="col-3">
+                        <div class="d-flex justify-content-end">{{ book_dict.review_count }}</div>
+                    
+                    </div>
+                    
+                    <div class="col-4">
+                        <a href="https://www.edx.org/course/cs50s-introduction-to-computer-science">
+                            <img src="/static/images/cs50-logo.jpeg" height="25px" class="ml-4"> </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                    <div class="progress mt-2" style="height: 6px;">
+                        <div class="progress-bar" role="progressbar" style="width: 77.6%;" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    </div>
+                    <div class="col-2">
+                      <div class="d-flex justify-content-end">{{ book_dict.balanced_score }}</div>
+                    </div>
+                    <div class="col-3">
+                        <div class="d-flex justify-content-end">{{ book_dict.total_reviews }}</div>
+                    </div>
+                    <div class="col-4">
+                        <a href="https://en.wikipedia.org/wiki/Weighted_arithmetic_mean">
+                            <img src="/static/images/average-round-black-stamp.jpg" width="25px" class="ml-4">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <p>
+            <ul class="lead my-1">Title: {{ book_dict.title }}</ul>
+            <ul class="lead my-1">Author: {{ book_dict.author }} </ul>
+            <ul class="lead my-1">Year: {{ book_dict.year }}</ul>
+            <ul class="lead my-1">ISBN: {{ book_dict.isbn }}</ul>
+        </p>
+
+
+    {% if user_score != "-" %}
+    <p>
+        <ul class="lead my-1">Your rate for this book is: {{ user_score }}</ul>
+    </p>
+        {% if text_review %}
+        <p>
+            <ul class="lead my-1">Your commented about this book:</ul>
+            <ul class="lead my-1">{{ text_review }}</ul>
+        </p>
+        {% else %}
+        <form method="POST">
+            <div class="form-group">
+                <div class="row ml-4 mt-1">
+                    <div class="col-10 col-sm-9 col-md-8 col-lg-8 col-xl-8 align-self-start">
+                        <textarea maxlength="255" class="form-control" rows="3" id="text_review" name="text_review"></textarea>
+                        <button type="submit" class="btn btn-primary mt-1 mt-sm-2">Review</button>
+
+                </div>
+            </form>
+
+        {% endif %}
+    {% else %}
+        <div class="row ml-4">
+            <div class="col-5 col-sm-4 align-self-start">
+                <div>Rate This Book</div>
+            </div>
+        </div>
+        <form method="POST">
+            <div class="form-group">
+                <div class="row ml-4">
+                    <div class="col-3 col-sm-3 col-md-2 col-lg-2 col-xl-2 align-self-start">
+                        <select class="form-control" id="book_rate" name="book_rate">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row ml-4 mt-1">
+                    <div class="col-10 col-sm-9 col-md-8 col-lg-8 col-xl-8 align-self-start">
+                        <textarea maxlength="250" class="form-control" rows="3" id="text_review" name="text_review"></textarea>
+                        <button type="submit" class="btn btn-primary mt-1 mt-sm-2">Review</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

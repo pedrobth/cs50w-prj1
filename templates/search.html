@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block main %}
+    <form class="container bg-dark" method="POST">
+        <div class="d-flex flex-column flex-md-row align-items-center p2 px-md-4 md-3 bg-dark border-bottom box-shadow mt-5"> 
+            <h1 class="display-4 bg-dark text-white">Search Book</h1>
+        </div>
+        <div class="row">
+            <div class="ml-3 mt-2 mt-sm-3">Choose ISBN, Author or Title:</div>
+        </div>
+        <div class="row">
+            <div class="form-group mx-sm-3 mb-2 ml-3">
+              <input type="text" class="form-control" placeholder="123.. or John or Dracula " id="search_input" name="search_input">
+            </div>
+        </div>
+        
+        <div class="form-check form-check-inline ml-1 mt-2 mt-sm-3">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="isbn" value="isbn">
+            <label class="form-check-label" for="inlineRadio1">ISBN</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="author" value="author">
+            <label class="form-check-label" for="inlineRadio2">Author</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="title" value="title">
+            <label class="form-check-label" for="inlineRadio3">Title</label>
+        </div>
+        <div class="row ml-1 mt-2 mt-sm-3">
+          <button type="submit" class="btn btn-primary mt-1 mt-sm-2">Search</button>
+        </div>
+    </form>
+{% endblock %}

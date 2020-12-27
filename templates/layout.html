@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- documentation at http://getbootstrap.com/docs/4.1/, alternative themes at https://bootstrapwatch.com/ -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+        
+
+        <!-- https://favicon.io/emoji-favicons/money-mouth-face/ -->
+        <link href="/static/favicon.ico" rel="icon">
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+        <title>Books:{% block title %}{% endblock %}</title>
+
+    </head>
+
+    <body class="bg-dark text-white">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark border-dark">
+            {% if session.user_id %}
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-home" href="{{ url_for('index') }}" role="tab"  aria-controls="pills-home" aria-selected="true">Search</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-books" href="{{ url_for('books') }}" role="tab" aria-controls="pills-books" aria-selected="false">Books</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-contact" href="{{ url_for('logout') }}" role="tab" aria-controls="pills-contact" aria-selected="false">Logout</a>
+                    </li>
+                </ul>      
+            {% else %}
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li class="navitem">
+                        <a class="nav-link" id="pills-login" href="{{ url_for('login') }}" role="tab" aria-controls="pills-login" aria-selected="true"
+                        >Login</a>                
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="register" href="{{ url_for('register') }}" role="tab" aria-controls="pills-register" aria-selected="false">Create Account</a>
+                    </li>            
+                </ul>            
+            {% endif %}
+            </div>
+        </nav>
+        {% block main %} {% endblock %}
+    </body>
